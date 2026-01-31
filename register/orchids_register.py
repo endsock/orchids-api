@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import random
 import string
@@ -8,6 +9,12 @@ import html
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+# 设置控制台编码为 UTF-8
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -16,7 +23,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 # ================= 配置区 =================
 MAIL_API = "https://mail.chatgpt.org.uk"
-MAIL_KEY = "gpt-test"  
+MAIL_KEY = "sk-tZjdokCa"  
 OUTPUT_FILE = os.path.abspath("orchids_accounts.txt")
 TARGET_URL = "https://www.orchids.app/"
 
